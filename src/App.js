@@ -7,6 +7,7 @@ import { Player } from "./Player"
 import { Model as Building } from "./Building";
 
 export default function App() {
+    //app
   return (
     <KeyboardControls
       map={[
