@@ -9,9 +9,12 @@ Title: Wizard Book Stand
 
 import React, { useState } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { TextureLoader } from 'three';
+import { useLoader } from '@react-three/fiber';
 
 function Model(props) {
-  const { nodes, materials } = useGLTF('/book_stand.glb')
+  const { nodes, materials, textures } = useGLTF('/book_stand.glb')
+  const colorMap = useLoader(TextureLoader, 'texture01.jpg');
 
   // State values for hover
   const [hovered, setHover] = useState(false);
@@ -23,11 +26,12 @@ function Model(props) {
       <group rotation={[-Math.PI / 2, 0, 0]} scale={0.45}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <mesh geometry={nodes.defaultMaterial.geometry} material={materials['Material.00_Material.001_gen_ligh']} />
-          <mesh geometry={nodes.defaultMaterial_1.geometry} material={materials['Material.002_material_flaskthing.d']} />
-          <mesh geometry={nodes.defaultMaterial_2.geometry} material={materials['Material.001_model001_material002']} />
-          <mesh geometry={nodes.defaultMaterial_3.geometry} material={materials.Material_lootchest_ezmo_stuff} >
-            <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+          <mesh geometry={nodes.defaultMaterial_1.geometry} material={materials['Material.002_material_flaskthing.d']}>
+            <meshStandardMaterial map={colorMap} color={hovered ? "lightgreen" : "white"} />
           </mesh>
+{/*}      <mesh geometry={nodes.defaultMaterial_3.geometry} material={materials.Material_lootchest_ezmo_stuff} >
+            <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+          </mesh>{*/}
         </group>
       </group>
     </group>
