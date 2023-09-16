@@ -10,8 +10,11 @@ Title: Interior Building Scene
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
+import Book from "./Book_stand";
+
 export function Model(props) {
   const { nodes, materials } = useGLTF('./building.glb')
+
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
@@ -27,6 +30,9 @@ export function Model(props) {
         <mesh geometry={nodes.Material3_1.geometry} material={materials.Light} />
         <mesh geometry={nodes.Material2_8.geometry} material={materials.Black} />
       </group>
+
+<Book />
+
     </group>
   )
 }

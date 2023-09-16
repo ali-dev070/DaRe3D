@@ -5,6 +5,7 @@ import { Ground } from "./Ground"
 import { Player } from "./Player"
 
 import { Model as Building } from "./Building";
+import Book from "./Book_stand";
 
 export default function App() {
     //app
@@ -25,8 +26,21 @@ export default function App() {
           <Ground />
 
           <RigidBody type="fixed" colliders="trimesh">
-            <Building scale={0.0175} position={[0,0.001,-10]}/>
+            <Building scale={0.017} position={[0,0.001,-10]} rotation={[0, Math.PI/2, 0]}/>
           </RigidBody>
+          {/** ground floor in door */}
+          <Book scale={0.5} position={[0.5,0.3,-8.5]} rotation={[0,  3/2 * Math.PI, 0]}/>
+
+          {/** ground floor lef far corner */}
+          <Book scale={0.5} position={[-4.5,0.3,-10]} rotation={[0, 1/2 * Math.PI, 0]}/>
+
+          {/** first floor */}
+          <Book scale={0.5} position={[1,1.05,-14]} rotation={[0, 0 * Math.PI, 0]}/>
+
+          {/** second floor */}
+          <Book scale={0.5} position={[-6.25,1.7,-12.5]} rotation={[0, 1/2 * Math.PI, 0]}/>
+          {/** third floor */}
+          <Book scale={0.5} position={[-3.75,2.95,-16.5]} rotation={[0, 2 * Math.PI, 0]}/>
           
           <Player />
 
