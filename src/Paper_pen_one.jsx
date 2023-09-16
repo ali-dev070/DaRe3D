@@ -15,7 +15,7 @@ export function Model(props) {
   const { nodes, materials, animations } = useGLTF('/paper_pen_one.glb')
   const { actions } = useAnimations(animations, group);
 
-  actions.Animation.play();
+//  actions.Animation.play();
 
   console.log(actions.AnimationAction);
   return (
