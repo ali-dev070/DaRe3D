@@ -170,3 +170,22 @@ button {
   text-decoration: underline;
   color: inherit;
 }
+
+.popup-screen-show{
+  height: 400px;
+  width: 500px;
+
+  opacity: 25%;
+  z-index: 1;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.popup-screen-hidden{
+  display: none;
+}

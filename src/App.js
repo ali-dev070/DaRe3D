@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber"
 import { Sky, PointerLockControls, KeyboardControls } from "@react-three/drei"
-import { Physics, RigidBody } from "@react-three/rapier"
+import { Physics, RigidBody } from "@react-three/rapier";
+
 import { Ground } from "./Ground"
 import { Player } from "./Player"
 
@@ -9,9 +10,28 @@ import Book from "./Book_stand";
 import {Model as PaperPen} from "./Paper_pen_one";
 import {Model as Scroll} from "./Scroll01";
 
+import React, { useState } from "react";
+
 export default function App() {
     //app
+    const [popupTrigger, setPopupTrigger] = useState(false);
+
+    const eventHandler = (e) => {
+      e.stopPropagation();
+
+//      document.pointerLockElement.unlock();
+      setPopupTrigger(true);
+    }
+    const eventHandler2 = (e) => {
+      e.stopPropagation();
+
+      setPopupTrigger(false);
+    }
+
   return (
+    <>
+    <div className={popupTrigger?"popup-screen-show":"popup-screen-hidden"} >show popup<button onClick={eventHandler2}>close popup</button></div>
+
     <KeyboardControls
       map={[
         { name: "forward", keys: ["ArrowUp", "w", "W"] },
@@ -32,8 +52,8 @@ export default function App() {
           </RigidBody>
 
           {/** ground floor in door */}
-          <Book scale={0.5} position={[0.5,0.3,-8.5]} rotation={[0,  3/2 * Math.PI, 0]}/>
-          <PaperPen scale={0.65} position={[0.5,0.70,-8.5]} rotation={[0,Math.PI,0]}/>
+          <Book scale={0.5} position={[0.5,0.3,-8.5]} rotation={[0,  3/2 * Math.PI, 0]} onClick={ eventHandler }/>
+          <PaperPen scale={0.65} position={[0.5,0.70,-8.5]} rotation={[0,Math.PI,0]} />
 
           {/** ground floor lef far corner */}
           <Book scale={0.5} position={[-4.5,0.3,-10]} rotation={[0, 1/2 * Math.PI, 0]}/>
@@ -52,6 +72,8 @@ export default function App() {
         </Physics>
         <PointerLockControls />
       </Canvas>
+
     </KeyboardControls>
+</>
   )
 }
