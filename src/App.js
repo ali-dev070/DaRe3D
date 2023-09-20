@@ -30,7 +30,13 @@ export default function App() {
 
   return (
     <>
-    <div className={popupTrigger?"popup-screen-show":"popup-screen-hidden"} >show popup<button onClick={eventHandler2}>close popup</button></div>
+    <div className={popupTrigger?"popup-screen-show":"popup-screen-hidden"} >
+      <spam className="inner-text">
+        Event/Report summary & link goes here.
+      </spam>
+      <br/>
+      <button onClick={eventHandler2}>close popup</button>
+      </div>
 
     <KeyboardControls
       map={[
